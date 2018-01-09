@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class RatingInfo {
@@ -12,6 +15,10 @@ public class RatingInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@ManyToOne
+	@JsonIgnore
+	private Place place;
 
 	@Column(nullable = false)
 	private int rating;
@@ -87,6 +94,14 @@ public class RatingInfo {
 
 	public void setComments(String comments) {
 		this.comments = comments;
+	}
+
+	public Place getPlace() {
+		return place;
+	}
+
+	public void setPlace(Place place) {
+		this.place = place;
 	};
 
 }
