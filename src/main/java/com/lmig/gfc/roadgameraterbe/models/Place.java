@@ -63,7 +63,29 @@ public class Place {
 	}
 
 	public void setRatingInfo(List<RatingInfo> ratingInfo) {
+		
+		//place.setRatingInfo(ratingInfo);
+//		Place place = new Place();
+//		.addRatingInfoToList(info);
+//		//this.ratingInfo = ratingInfo;
+		
 		this.ratingInfo = ratingInfo;
-	};
+//		System.out.print(ratingInfo);
+	}
+	
+	public void addRatingInfoToList(List<RatingInfo> ratingInfo, RatingInfo info) {
+		ratingInfo.add(info);	
+		System.out.print(ratingInfo);
+		
+	}
+	
+//	public void addListToPlace() {
+//		Place place = new Place();
+//		place.setRatingInfo(ratingInfo);
+//		
+//		
+//	}
+// 
+	
 	
 }
