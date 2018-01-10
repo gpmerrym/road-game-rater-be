@@ -28,6 +28,7 @@ public class RatingInfoToPlacesApiController {
 		Place place = placeRepo.findOne(placeId);
 		if (!place.getRatingInfo().contains(ratingInfo)) {
 			place.getRatingInfo().add(ratingInfo);
+			ratingInfo.setId(placeId);
 			ratingInfo.setPlace(place);
 			ratingInfoRepo.save(ratingInfo);
 		}
