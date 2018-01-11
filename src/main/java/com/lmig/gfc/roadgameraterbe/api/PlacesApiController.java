@@ -29,11 +29,10 @@ public class PlacesApiController {
 		this.placeRepo = placeRepo;
 	}
 
-	
 	@GetMapping("")
 	public List<Place> getAll() {
 		return placeRepo.findAll();
-	} 
+	}
 
 	@GetMapping("{id}")
 	public Place getOne(@PathVariable Long id) {
@@ -43,8 +42,14 @@ public class PlacesApiController {
 
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Place create(@RequestBody Place place) { 
-		return placeRepo.save(place);
+	public Place create(@RequestBody Place place) {
+		String googleId = place.getGoogleId();
+		Place identifiedPlace = placeRepo.findByGoogleId(googleId);
+
+		if (identifiedPlace == null) {
+			return placeRepo.save(place);
+		}
+		return identifiedPlace;
 
 	}
 

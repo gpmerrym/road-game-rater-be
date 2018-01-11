@@ -16,23 +16,51 @@ public class Place {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
+	@Column(length = 300, nullable = false)
+	private String googleId;
+
 	@OneToMany(mappedBy = "place", fetch = FetchType.EAGER)
 	private List<RatingInfo> ratingInfo;
-	
+
 	@Column(length = 300, nullable = false)
 	private String name;
-	
+
 	@Column(length = 300, nullable = false)
 	private String address;
-	
-	public Place(String name, String address) {
+
+	@Column()
+	private double averageRate;
+
+	@Column()
+	private double totalRates;
+
+	public Place(String name, String address, String googleId) {
 		super();
 		this.name = name;
 		this.address = address;
+		this.googleId = googleId;
 	}
-	
-	public Place() {}
+
+	public Place() {
+	}
+
+	public void calculateTotalRates() {
+		int count = ratingInfo.size();
+		this.totalRates = count;
+	}
+
+	public void calculateAverageRates() {
+		double count = getTotalRates();
+		double total = 0;
+
+		for (int i = 0; i < ratingInfo.size(); i++) {
+			total += ratingInfo.get(i).getRating();
+		}
+
+		this.averageRate = total / count;
+
+	}
 
 	public Long getId() {
 		return id;
@@ -63,29 +91,38 @@ public class Place {
 	}
 
 	public void setRatingInfo(List<RatingInfo> ratingInfo) {
-		
-		//place.setRatingInfo(ratingInfo);
-//		Place place = new Place();
-//		.addRatingInfoToList(info);
-//		//this.ratingInfo = ratingInfo;
-		
 		this.ratingInfo = ratingInfo;
-//		System.out.print(ratingInfo);
 	}
-	
+
 	public void addRatingInfoToList(List<RatingInfo> ratingInfo, RatingInfo info) {
-		ratingInfo.add(info);	
+		ratingInfo.add(info);
 		System.out.print(ratingInfo);
-		
 	}
-	
-//	public void addListToPlace() {
-//		Place place = new Place();
-//		place.setRatingInfo(ratingInfo);
-//		
-//		
-//	}
-// 
-	
-	
+
+	public String getGoogleId() {
+		return googleId;
+	}
+
+	public void setGoogleId(String googleId) {
+		this.googleId = googleId;
+	}
+
+	public double getAverageRate() {
+		calculateAverageRates();
+		return averageRate;
+	}
+
+	public void setAverageRate(double averageRate) {
+		this.averageRate = averageRate;
+	}
+
+	public double getTotalRates() {
+		calculateTotalRates();
+		return totalRates;
+	}
+
+	public void setTotalRates(int totalRates) {
+		this.totalRates = totalRates;
+	}
+
 }
