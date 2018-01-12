@@ -29,17 +29,15 @@ public class Place {
 	@Column(length = 300, nullable = false)
 	private String address;
 
-	@Column()
 	private double averageRate;
 
-	@Column()
 	private double totalRates;
 
 	public Place(String name, String address, String googleId) {
-		super();
 		this.name = name;
 		this.address = address;
 		this.googleId = googleId;
+
 	}
 
 	public Place() {
@@ -58,7 +56,7 @@ public class Place {
 			total += ratingInfo.get(i).getRating();
 		}
 
-		this.averageRate = total / count;
+		averageRate = total / count;
 
 	}
 

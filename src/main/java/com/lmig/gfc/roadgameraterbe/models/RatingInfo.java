@@ -15,7 +15,7 @@ public class RatingInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@ManyToOne
 	@JsonIgnore
 	private Place place;
@@ -37,7 +37,7 @@ public class RatingInfo {
 
 	public RatingInfo(int rating, Boolean isClean, Boolean isHandicap, Boolean isFamily, String comments) {
 		super();
-		
+
 		this.rating = rating;
 		this.isClean = isClean;
 		this.isHandicap = isHandicap;

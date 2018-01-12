@@ -29,11 +29,10 @@ public class RatingInfoApiController {
 		this.ratingInfoRepo = ratingInfoRepo;
 	}
 
-	
 	@GetMapping("")
 	public List<RatingInfo> getAll() {
 		return ratingInfoRepo.findAll();
-	} 
+	}
 
 	@GetMapping("{id}")
 	public RatingInfo getOne(@PathVariable Long id) {
@@ -43,7 +42,7 @@ public class RatingInfoApiController {
 
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public RatingInfo create(@RequestBody RatingInfo info) { 
+	public RatingInfo create(@RequestBody RatingInfo info) {
 		return ratingInfoRepo.save(info);
 
 	}
@@ -62,4 +61,3 @@ public class RatingInfoApiController {
 	}
 
 }
-
