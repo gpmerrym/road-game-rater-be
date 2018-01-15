@@ -34,6 +34,12 @@ public class PlacesApiController {
 		return placeRepo.findAll();
 	}
 
+	@GetMapping("/googleId/{googleId}")
+	public Place getOne(@PathVariable String googleId) {
+		return placeRepo.findByGoogleId(googleId);
+		
+	}
+	
 	@GetMapping("{id}")
 	public Place getOne(@PathVariable Long id) {
 		return placeRepo.findOne(id);
