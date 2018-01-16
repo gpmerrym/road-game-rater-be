@@ -1,7 +1,7 @@
 package com.lmig.gfc.roadgameraterbe.models;
 
 import java.util.ArrayList;
-
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,17 +14,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.authority.SimpleGrantedAuthority;
-//import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="rgr_user")
-public class User //implements UserDetails {
-{
-	//private static final long serialVersionUID = 1L;
+@Table(name="app_user")
+public class User implements UserDetails {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,6 +32,12 @@ public class User //implements UserDetails {
 	
 	@Column(nullable = false, unique = true)
 	private String username;
+	
+	@Column()//(//nullable = false)
+    private String firstName;
+
+	@Column()//(nullable = false)
+    private String lastName;
 	
 	@Column(nullable = false)
 	private String password;
@@ -43,6 +49,15 @@ public class User //implements UserDetails {
 	public User() {
 		roles = new ArrayList<Role>();
 	}
+	
+//	public User(String firstName, String lastName, String username, String password) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.username = username;
+//        this.password = password;
+//
+//    }
+
 
 	public Long getId() {
 		return id;
@@ -95,39 +110,39 @@ public class User //implements UserDetails {
 		roles.add(role);
 	}
 
-//	@Override
-//	public Collection<? extends GrantedAuthority> getAuthorities() {
-//		ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-//		
-//		for (Role role : roles) {
-//			String roleName = "ROLE_" + role.getName();
-//			SimpleGrantedAuthority authority = new SimpleGrantedAuthority(roleName);
-//			authorities.add(authority);
-//		}
-//		
-//		return authorities;
-//	}
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		
+		for (Role role : roles) {
+			String roleName = "ROLE_" + role.getName();
+			SimpleGrantedAuthority authority = new SimpleGrantedAuthority(roleName);
+			authorities.add(authority);
+		}
+		
+		return authorities;
+	}
 
-//	@Override
-//	public boolean isAccountNonExpired() {
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean isAccountNonLocked() {
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean isCredentialsNonExpired() {
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean isEnabled() {
-//		return true;
-//	}
-//	
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+	
 	private boolean hasRole(String roleName) {
 		boolean hasRole = false;
 		for (Role role : roles) {
@@ -137,6 +152,22 @@ public class User //implements UserDetails {
 			}
 		}
 		return hasRole;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 }

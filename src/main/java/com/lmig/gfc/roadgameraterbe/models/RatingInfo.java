@@ -32,7 +32,7 @@ public class RatingInfo {
 	@Column
 	private Boolean isFamily;
 
-	@Column(length = 300, nullable = false)
+	@Column(length = 300)
 	private String comments;
 
 	public RatingInfo(int rating, Boolean isClean, Boolean isHandicap, Boolean isFamily, String comments) {
