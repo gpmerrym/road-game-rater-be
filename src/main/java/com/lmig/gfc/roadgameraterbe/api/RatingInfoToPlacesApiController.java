@@ -16,7 +16,7 @@ import com.lmig.gfc.roadgameraterbe.repositories.PlaceRepository;
 import com.lmig.gfc.roadgameraterbe.repositories.RatingInfoRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/places/{placeId}/ratinginfo")
 public class RatingInfoToPlacesApiController {
 

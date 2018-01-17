@@ -8,25 +8,22 @@ import org.springframework.stereotype.Service;
 import com.lmig.gfc.roadgameraterbe.models.User;
 import com.lmig.gfc.roadgameraterbe.repositories.UserRepository;
 
-
-
-
 @Service
 public class AuthenticationService implements UserDetailsService {
 
-    private UserRepository usersRepository;
+	private UserRepository usersRepository;
 
-    public AuthenticationService(UserRepository usersRepository) {
-        this.usersRepository = usersRepository;
-    }
+	public AuthenticationService(UserRepository usersRepository) {
+		this.usersRepository = usersRepository;
+	}
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = usersRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException(username);
-        }
-        return user;
-    }
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = usersRepository.findByUsername(username);
+		if (user == null) {
+			throw new UsernameNotFoundException(username);
+		}
+		return user;
+	}
 
 }

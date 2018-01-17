@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lmig.gfc.roadgameraterbe.models.RatingInfo;
 import com.lmig.gfc.roadgameraterbe.repositories.RatingInfoRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/ratinginfo")
 public class RatingInfoApiController {

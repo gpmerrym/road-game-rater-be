@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lmig.gfc.roadgameraterbe.models.Place;
 import com.lmig.gfc.roadgameraterbe.repositories.PlaceRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/places")
 public class PlacesApiController {

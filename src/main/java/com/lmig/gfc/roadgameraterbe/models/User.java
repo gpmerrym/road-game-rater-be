@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -110,18 +109,25 @@ public class User implements UserDetails {
 		roles.add(role);
 	}
 
+//	@Override
+//	public Collection<? extends GrantedAuthority> getAuthorities() {
+//		ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+//		
+//		for (Role role : roles) {
+//			String roleName = "ROLE_" + role.getName();
+//			SimpleGrantedAuthority authority = new SimpleGrantedAuthority(roleName);
+//			authorities.add(authority);
+//		}
+//		
+//		return authorities;
+//	}
+	
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		
-		for (Role role : roles) {
-			String roleName = "ROLE_" + role.getName();
-			SimpleGrantedAuthority authority = new SimpleGrantedAuthority(roleName);
-			authorities.add(authority);
-		}
-		
-		return authorities;
-	}
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 
 	@Override
 	public boolean isAccountNonExpired() {
