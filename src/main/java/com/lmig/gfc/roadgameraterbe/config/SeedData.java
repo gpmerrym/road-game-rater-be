@@ -1,5 +1,7 @@
 package com.lmig.gfc.roadgameraterbe.config;
 
+
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -197,18 +199,31 @@ public class SeedData {
 		ratingInfoRepo.save(rating40);
 
 		String encodedPassword = encoder.encode("password");
-
+				
 		User user = new User();
+		
+		user.setFirstName("David");
+		user.setLastName("Smith");
+		user.setPassword(encodedPassword);
 		user.setUsername("admin");
-		user.setPassword(encodedPassword);
-		user.addRole("ADMIN");
 		userRepo.save(user);
-
-		user = new User();
-		user.setUsername("user");
-		user.setPassword(encodedPassword);
-		user.addRole("USER");
-		userRepo.save(user);
+		
+		//user.addRole("ADMIN");
+		//admin.addRole("");
+		//admin.setUsername("admin");
+		//admin.setPassword(encodedPassword);
+		//admin.addRole("ADMIN");
+		//admin.addRole("ADMIN");
+		
+		User user2 = new User();
+		user2.setFirstName("John");
+		user2.setUsername("user");
+		user2.setPassword(encodedPassword);
+		user2.setLastName("James");
+		//user.setUsername("user");
+		//user.setPassword(encodedPassword);
+		//user.addRole("USER");
+		userRepo.save(user2);
 
 	}
 

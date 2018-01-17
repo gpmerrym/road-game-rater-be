@@ -32,8 +32,11 @@ public class RatingInfo {
 	@Column
 	private Boolean isFamily;
 
-	@Column(length = 300)
+	@Column(length = 500)
 	private String comments;
+	
+	@Column
+	private String itemImageUrl;
 
 	public RatingInfo(int rating, Boolean isClean, Boolean isHandicap, Boolean isFamily, String comments) {
 		super();
@@ -102,6 +105,14 @@ public class RatingInfo {
 
 	public void setPlace(Place place) {
 		this.place = place;
+	}
+
+	public String getItemImageUrl() {
+		return itemImageUrl;
+	}
+
+	public void setItemImageUrl(String itemImageUrl) {
+		this.itemImageUrl = itemImageUrl;
 	};
 
 }

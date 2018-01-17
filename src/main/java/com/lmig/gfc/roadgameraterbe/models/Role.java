@@ -23,7 +23,7 @@ public class Role {
 	private User user;
 	
 	public Role() {}
-
+	
 	public Long getId() {
 		return id;
 	}

@@ -33,10 +33,10 @@ public class User implements UserDetails {
 	@Column(nullable = false, unique = true)
 	private String username;
 	
-	@Column()//(//nullable = false)
+	@Column(nullable = false)
     private String firstName;
 
-	@Column()//(nullable = false)
+	@Column(nullable = false)
     private String lastName;
 	
 	@Column(nullable = false)
@@ -50,13 +50,13 @@ public class User implements UserDetails {
 		roles = new ArrayList<Role>();
 	}
 	
-//	public User(String firstName, String lastName, String username, String password) {
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.username = username;
-//        this.password = password;
-//
-//    }
+	public User(String firstName, String lastName, String username, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+
+    }
 
 
 	public Long getId() {
