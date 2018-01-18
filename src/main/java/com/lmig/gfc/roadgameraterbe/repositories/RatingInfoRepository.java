@@ -11,5 +11,7 @@ import com.lmig.gfc.roadgameraterbe.models.RatingInfo;
 public interface RatingInfoRepository extends JpaRepository<RatingInfo, Long> {
 
 	List<RatingInfo> findByPlaceId(Long placeId);
+	List<RatingInfo> findByPlaceIdAndUserId(Long userId, Long placeId);
+	List<RatingInfo> findByUserId(Long userId);
 
 }

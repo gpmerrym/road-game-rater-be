@@ -41,6 +41,9 @@ public class User implements UserDetails {
 	@Column(nullable = false)
 	private String password;
 	
+	@OneToMany(mappedBy = "user")//, fetch = FetchType.EAGER)
+	private List<RatingInfo> ratingInfo;
+	
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Role> roles;
@@ -174,6 +177,14 @@ public class User implements UserDetails {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public List<RatingInfo> getRatingInfo() {
+		return ratingInfo;
+	}
+
+	public void setRatingInfo(List<RatingInfo> ratingInfo) {
+		this.ratingInfo = ratingInfo;
 	}
 
 }

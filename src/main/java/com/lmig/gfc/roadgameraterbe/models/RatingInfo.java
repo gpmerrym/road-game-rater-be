@@ -19,6 +19,10 @@ public class RatingInfo {
 	@ManyToOne
 	@JsonIgnore
 	private Place place;
+	
+	@ManyToOne
+	@JsonIgnore
+	private User user;
 
 	@Column(nullable = false)
 	private int rating;
@@ -113,6 +117,14 @@ public class RatingInfo {
 
 	public void setItemImageUrl(String itemImageUrl) {
 		this.itemImageUrl = itemImageUrl;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	};
 
 }

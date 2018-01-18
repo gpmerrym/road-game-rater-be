@@ -22,44 +22,46 @@ import com.lmig.gfc.roadgameraterbe.repositories.UserRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/places/{placeId}/ratinginfo")
-public class RatingInfoToPlacesApiController {
+@RequestMapping("/api/user/ratinginfo")
+public class UserToRatingInfoApiController {
 
 	private RatingInfoRepository ratingInfoRepo;
 	private PlaceRepository placeRepo;
 	private UserRepository userRepo;
 
-	public RatingInfoToPlacesApiController(RatingInfoRepository ratingInfoRepo, PlaceRepository placeRepo,
+	public UserToRatingInfoApiController(RatingInfoRepository ratingInfoRepo,
 			UserRepository userRepo) {
 		this.ratingInfoRepo = ratingInfoRepo;
-		this.placeRepo = placeRepo;
+		
 		this.userRepo = userRepo;
 	}
 
-	@PostMapping("")
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public Place create(@PathVariable Long placeId, @RequestBody RatingInfo ratingInfo, Authentication auth) {
-		Long userId = (((User) auth.getPrincipal()).getId());
-		User user = userRepo.findOne(userId);
-		Place place = placeRepo.findOne(placeId);
-
-		List<RatingInfo> identifiedList = ratingInfoRepo.findByPlaceIdAndUserId(placeId, userId);
- 
-		//System.out.println(identifiedList);
-		if (identifiedList.isEmpty()) {
-			ratingInfo.setPlace(place);
-			ratingInfo.setUser(user);
-			place.getRatingInfo().add(ratingInfo);
-			ratingInfoRepo.save(ratingInfo);
-			return place;
-		}
-
-		return place;
-	}
+//	@PostMapping("")
+//	@ResponseStatus(code = HttpStatus.CREATED)
+//	public Place create(@PathVariable Long placeId, @RequestBody RatingInfo ratingInfo, Authentication auth) {
+//		Long userId = (((User) auth.getPrincipal()).getId());
+//		User user = userRepo.findOne(userId);
+//		Place place = placeRepo.findOne(placeId);
+//
+//		List<RatingInfo> identifiedList = ratingInfoRepo.findByPlaceIdAndUserId(placeId, userId);
+// 
+//		//System.out.println(identifiedList);
+//		if (identifiedList.isEmpty()) {
+//			ratingInfo.setPlace(place);
+//			ratingInfo.setUser(user);
+//			place.getRatingInfo().add(ratingInfo);
+//			ratingInfoRepo.save(ratingInfo);
+//			return place;
+//		}
+//
+//		return place;
+//	}
 
 	@GetMapping("")
-	public List<RatingInfo> getAll(@PathVariable Long placeId) {
-		return ratingInfoRepo.findByPlaceId(placeId);
+	public List<RatingInfo> getAll(Authentication auth) {
+		Long userId = (((User) auth.getPrincipal()).getId());
+		return ratingInfoRepo.findByUserId(userId);
 	}
 
 }
+

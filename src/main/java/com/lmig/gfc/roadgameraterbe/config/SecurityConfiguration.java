@@ -32,13 +32,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				// .antMatchers(HttpMethod.POST, "/api/users/new").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/user/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/place/{id}").permitAll()
-
 				.antMatchers(HttpMethod.PUT, "/api/session/mine").permitAll()
+				.antMatchers(HttpMethod.DELETE, "/api/session/mine").permitAll()
 				.antMatchers(HttpMethod.OPTIONS).permitAll()
 				.anyRequest()
 				.authenticated()
 				.and()
-				.csrf()
+				.csrf() 
 				.disable();
 	}
 
