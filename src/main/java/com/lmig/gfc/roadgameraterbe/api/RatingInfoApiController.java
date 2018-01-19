@@ -3,10 +3,8 @@ package com.lmig.gfc.roadgameraterbe.api;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
-//import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lmig.gfc.roadgameraterbe.models.RatingInfo;
-import com.lmig.gfc.roadgameraterbe.models.User;
 import com.lmig.gfc.roadgameraterbe.repositories.RatingInfoRepository;
-import com.lmig.gfc.roadgameraterbe.repositories.UserRepository;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -28,9 +24,6 @@ import com.lmig.gfc.roadgameraterbe.repositories.UserRepository;
 public class RatingInfoApiController {
 
 	private RatingInfoRepository ratingInfoRepo;
-//	private AuthenticationManager authenticator;
-//	private UserRepository userRepo;
-	
 
 	public RatingInfoApiController(RatingInfoRepository ratingInfoRepo) {
 		this.ratingInfoRepo = ratingInfoRepo;
@@ -51,15 +44,7 @@ public class RatingInfoApiController {
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public RatingInfo create(@RequestBody RatingInfo info, Authentication auth) {
-		//Long userId = (((User) auth.getPrincipal()).getId());
-		//User user = userRepo.findOne(userId);
-//		if (auth != null) {
-//			info.setUser(user);
 		return ratingInfoRepo.save(info);
-//		}
-//		return null;
-		//return ratingInfoRepo.save(info);
-
 	}
 
 	@PutMapping("{id}")

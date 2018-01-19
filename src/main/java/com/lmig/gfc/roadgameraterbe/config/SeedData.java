@@ -55,6 +55,7 @@ public class SeedData {
 				"ChIJU4A9mEOsFIgR1vSp_ecsdI0");
 
 		RatingInfo rating1 = new RatingInfo(4, false, false, false, "not so bad");
+		
 		RatingInfo rating2 = new RatingInfo(4, true, false, true, "good");
 		RatingInfo rating3 = new RatingInfo(3, false, true, true, "great");
 		RatingInfo rating4 = new RatingInfo(3, true, false, true, "average");
@@ -94,19 +95,36 @@ public class SeedData {
 		RatingInfo rating38 = new RatingInfo(3, true, false, true, "good");
 		RatingInfo rating39 = new RatingInfo(5, true, false, true, "good");
 		RatingInfo rating40 = new RatingInfo(1, true, false, true, "good");
+		
+		String encodedPassword = encoder.encode("password");
+		
+		User user = new User();
+		
+		user.setFirstName("David");
+		user.setLastName("Smith");
+		user.setPassword(encodedPassword);
+		user.setUsername("admin");
+		userRepo.save(user);
+		
+		User user2 = new User();
+		user2.setFirstName("John");
+		user2.setUsername("user");
+		user2.setPassword(encodedPassword);
+		user2.setLastName("James");
+		userRepo.save(user2);
 
 		rating1.setPlace(location1);
 		rating2.setPlace(location1);
-		rating3.setPlace(location3);
-		rating4.setPlace(location3);
-		rating6.setPlace(location2);
-		rating7.setPlace(location2);
+		rating3.setPlace(location2);
+		rating4.setPlace(location2);
+		rating5.setPlace(location3);
+		rating6.setPlace(location3);
+		rating7.setPlace(location4);
 		rating8.setPlace(location4);
-		rating9.setPlace(location4);
+		rating9.setPlace(location5);
 		rating10.setPlace(location5);
-		rating11.setPlace(location5);
+		rating11.setPlace(location6);
 		rating12.setPlace(location6);
-		rating5.setPlace(location6);
 		rating13.setPlace(location7);
 		rating14.setPlace(location7);
 		rating15.setPlace(location8);
@@ -135,6 +153,48 @@ public class SeedData {
 		rating38.setPlace(location19);
 		rating39.setPlace(location20);
 		rating40.setPlace(location20);
+		
+		
+		rating1.setUser(user);
+		rating2.setUser(user2);
+		rating3.setUser(user);
+		rating4.setUser(user2);
+		rating5.setUser(user);
+		rating6.setUser(user2);
+		rating7.setUser(user);
+		rating8.setUser(user2);
+		rating9.setUser(user);
+		rating10.setUser(user2);
+		rating11.setUser(user);
+		rating12.setUser(user2);
+		rating13.setUser(user);
+		rating14.setUser(user2);
+		rating15.setUser(user);
+		rating16.setUser(user2);
+		rating17.setUser(user);
+		rating18.setUser(user2);
+		rating19.setUser(user);
+		rating20.setUser(user2);
+		rating21.setUser(user);
+		rating22.setUser(user2);
+		rating23.setUser(user);
+		rating24.setUser(user2);
+		rating25.setUser(user);
+		rating26.setUser(user2);
+		rating27.setUser(user);
+		rating28.setUser(user2);
+		rating29.setUser(user);
+		rating30.setUser(user2);
+		rating31.setUser(user);
+		rating32.setUser(user2);
+		rating33.setUser(user);
+		rating34.setUser(user2);
+		rating35.setUser(user);
+		rating36.setUser(user2);
+		rating37.setUser(user);
+		rating38.setUser(user2);
+		rating39.setUser(user);
+		rating40.setUser(user2);
 
 		placeRepo.save(location1);
 		placeRepo.save(location2);
@@ -198,33 +258,7 @@ public class SeedData {
 		ratingInfoRepo.save(rating39);
 		ratingInfoRepo.save(rating40);
 
-		String encodedPassword = encoder.encode("password");
-				
-		User user = new User();
 		
-		user.setFirstName("David");
-		user.setLastName("Smith");
-		user.setPassword(encodedPassword);
-		user.setUsername("admin");
-		userRepo.save(user);
-		
-		//user.addRole("ADMIN");
-		//admin.addRole("");
-		//admin.setUsername("admin");
-		//admin.setPassword(encodedPassword);
-		//admin.addRole("ADMIN");
-		//admin.addRole("ADMIN");
-		
-		User user2 = new User();
-		user2.setFirstName("John");
-		user2.setUsername("user");
-		user2.setPassword(encodedPassword);
-		user2.setLastName("James");
-		//user.setUsername("user");
-		//user.setPassword(encodedPassword);
-		//user.addRole("USER");
-		userRepo.save(user2);
-
 	}
 
 }

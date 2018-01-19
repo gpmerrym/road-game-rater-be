@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
+
 @Entity
 public class RatingInfo {
 
@@ -41,6 +43,11 @@ public class RatingInfo {
 	
 	@Column
 	private String itemImageUrl;
+	
+//	@Column
+//	private Place location;
+	
+	
 
 	public RatingInfo(int rating, Boolean isClean, Boolean isHandicap, Boolean isFamily, String comments) {
 		super();
@@ -125,6 +132,8 @@ public class RatingInfo {
 
 	public void setUser(User user) {
 		this.user = user;
-	};
+	}
+
+
 
 }

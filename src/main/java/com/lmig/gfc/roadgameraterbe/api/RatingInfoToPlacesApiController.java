@@ -28,6 +28,7 @@ public class RatingInfoToPlacesApiController {
 	private RatingInfoRepository ratingInfoRepo;
 	private PlaceRepository placeRepo;
 	private UserRepository userRepo;
+	
 
 	public RatingInfoToPlacesApiController(RatingInfoRepository ratingInfoRepo, PlaceRepository placeRepo,
 			UserRepository userRepo) {
@@ -42,10 +43,9 @@ public class RatingInfoToPlacesApiController {
 		Long userId = (((User) auth.getPrincipal()).getId());
 		User user = userRepo.findOne(userId);
 		Place place = placeRepo.findOne(placeId);
-
+						
 		List<RatingInfo> identifiedList = ratingInfoRepo.findByPlaceIdAndUserId(placeId, userId);
- 
-		//System.out.println(identifiedList);
+		
 		if (identifiedList.isEmpty()) {
 			ratingInfo.setPlace(place);
 			ratingInfo.setUser(user);

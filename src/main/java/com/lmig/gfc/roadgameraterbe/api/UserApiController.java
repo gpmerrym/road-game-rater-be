@@ -18,39 +18,37 @@ import com.lmig.gfc.roadgameraterbe.repositories.UserRepository;
 @RequestMapping("/api/user")
 public class UserApiController {
 
-    private UserRepository userRepository;
-    private PasswordEncoder encoder;
+	private UserRepository userRepository;
+	private PasswordEncoder encoder;
 
-    public UserApiController(UserRepository userRepository, PasswordEncoder encoder) {
-        this.userRepository = userRepository;
-        this.encoder = encoder;
-    }
+	public UserApiController(UserRepository userRepository, PasswordEncoder encoder) {
+		this.userRepository = userRepository;
+		this.encoder = encoder;
+	}
 
-    @GetMapping("")
-    public User getUser(Authentication auth) {
-        User user = (User) auth.getPrincipal();
-        String username = user.getUsername();
-        
-        return userRepository.findByUsername(username);
-    }
+	@GetMapping("")
+	public User getUser(Authentication auth) {
+		User user = (User) auth.getPrincipal();
+		String username = user.getUsername();
 
-    @PutMapping("")
-    public User updateUser(Authentication auth, @RequestBody User user) {
+		return userRepository.findByUsername(username);
+	}
 
-    	User loggedInUser = (User) auth.getPrincipal();
-    	user.setId(loggedInUser.getId());
-    	    	
-    	return userRepository.save(user);
-    }
+	@PutMapping("")
+	public User updateUser(Authentication auth, @RequestBody User user) {
 
-    @PostMapping("create")
-    public User createUser(@RequestBody User user) {
-        String password = user.getPassword();
-        String encryptedPassword = encoder.encode(password);
-        user.setPassword(encryptedPassword);
-        userRepository.save(user);        
-        return user;
-    }
+		User loggedInUser = (User) auth.getPrincipal();
+		user.setId(loggedInUser.getId());
+
+		return userRepository.save(user);
+	}
+
+	@PostMapping("create")
+	public User createUser(@RequestBody User user) {
+		String password = user.getPassword();
+		String encryptedPassword = encoder.encode(password);
+		user.setPassword(encryptedPassword);
+		userRepository.save(user);
+		return user;
+	}
 }
-
-

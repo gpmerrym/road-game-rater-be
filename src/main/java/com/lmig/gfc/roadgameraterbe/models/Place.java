@@ -21,6 +21,7 @@ public class Place {
 	private String googleId;
 
 	@OneToMany(mappedBy = "place", fetch = FetchType.EAGER)
+	// @JsonIgnore
 	private List<RatingInfo> ratingInfo;
 
 	@Column(length = 300, nullable = false)
@@ -123,4 +124,5 @@ public class Place {
 		this.totalRates = totalRates;
 	}
 
+	
 }

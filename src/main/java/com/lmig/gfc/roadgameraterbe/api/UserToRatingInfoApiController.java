@@ -22,7 +22,7 @@ import com.lmig.gfc.roadgameraterbe.repositories.UserRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/user/ratinginfo")
+@RequestMapping("/api/user/{id}")
 public class UserToRatingInfoApiController {
 
 	private RatingInfoRepository ratingInfoRepo;
@@ -30,9 +30,9 @@ public class UserToRatingInfoApiController {
 	private UserRepository userRepo;
 
 	public UserToRatingInfoApiController(RatingInfoRepository ratingInfoRepo,
-			UserRepository userRepo) {
+			UserRepository userRepo, PlaceRepository placeRepo) {
 		this.ratingInfoRepo = ratingInfoRepo;
-		
+		this.placeRepo = placeRepo;
 		this.userRepo = userRepo;
 	}
 
@@ -57,9 +57,20 @@ public class UserToRatingInfoApiController {
 //		return place;
 //	}
 
+//	@GetMapping("")
+//	public List<RatingInfo> getAll(Authentication auth) {
+//		Long userId = (((User) auth.getPrincipal()).getId());
+//		
+//		return ratingInfoRepo.findByUserId(userId);
+//	}
+	
 	@GetMapping("")
 	public List<RatingInfo> getAll(Authentication auth) {
 		Long userId = (((User) auth.getPrincipal()).getId());
+		
+//		List<RatingInfo> identifiedList = ratingInfoRepo.findByUserId(userId);
+//		placeRepo.findById(placeId)
+//		System.out.print(identifiedList);
 		return ratingInfoRepo.findByUserId(userId);
 	}
 
