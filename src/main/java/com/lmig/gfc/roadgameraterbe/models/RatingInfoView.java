@@ -4,6 +4,13 @@ public class RatingInfoView {
 
 	private RatingInfo ratingInfo;
 
+	
+
+	public RatingInfoView(RatingInfo ratingInfo) {
+		this.ratingInfo = ratingInfo;
+		// TODO Auto-generated constructor stub
+	}
+
 	public RatingInfo getRatinginfo() {
 		return ratingInfo;
 	}

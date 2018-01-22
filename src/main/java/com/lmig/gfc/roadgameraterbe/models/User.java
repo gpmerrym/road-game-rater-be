@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -44,7 +45,9 @@ public class User implements UserDetails {
 	@OneToMany(mappedBy = "user")//, fetch = FetchType.EAGER)
 	private List<RatingInfo> ratingInfo;
 	
-	//private List<Place> places;
+	@ManyToMany(mappedBy = "user")
+	@JsonIgnore
+	private List<Place> places;
 	
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonIgnore
@@ -187,6 +190,14 @@ public class User implements UserDetails {
 
 	public void setRatingInfo(List<RatingInfo> ratingInfo) {
 		this.ratingInfo = ratingInfo;
+	}
+
+	public List<Place> getPlaces() {
+		return places;
+	}
+
+	public void setPlaces(List<Place> places) {
+		this.places = places;
 	}
 
 //	public List<Place> getPlaces() {

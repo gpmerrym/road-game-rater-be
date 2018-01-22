@@ -50,6 +50,7 @@ public class RatingInfoToPlacesApiController {
 			ratingInfo.setPlace(place);
 			ratingInfo.setUser(user);
 			place.getRatingInfo().add(ratingInfo);
+			place.getUser().add(user);
 			ratingInfoRepo.save(ratingInfo);
 			return place;
 		}

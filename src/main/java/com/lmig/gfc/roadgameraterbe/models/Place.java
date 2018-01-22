@@ -8,7 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Place {
@@ -33,6 +36,10 @@ public class Place {
 	private double averageRate;
 
 	private double totalRates;
+	
+	@ManyToMany
+	@JsonIgnore
+	private List<User> user;
 
 	public Place(String name, String address, String googleId) {
 		this.name = name;
@@ -122,6 +129,14 @@ public class Place {
 
 	public void setTotalRates(int totalRates) {
 		this.totalRates = totalRates;
+	}
+
+	public List<User> getUser() {
+		return user;
+	}
+
+	public void setUser(List<User> user) {
+		this.user = user;
 	}
 
 	
