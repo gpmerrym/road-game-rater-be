@@ -11,5 +11,7 @@ public interface PlaceRepository extends JpaRepository<Place, Long> {
 
 	Place findByGoogleId(String googleId);
 	List<Place> findById(Long placeId);
+	List<Place> findByUserId(Long userId);
+	
 
 }

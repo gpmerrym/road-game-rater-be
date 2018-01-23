@@ -29,18 +29,20 @@ public class RatingInfoApiController {
 		this.ratingInfoRepo = ratingInfoRepo;
 		
 	}
-
+	//get all the rating info in the rating info repo
 	@GetMapping("")
 	public List<RatingInfo> getAll() {
 		return ratingInfoRepo.findAll();
 	}
 
+	//get one rate info based on ratinginfo id
 	@GetMapping("{id}")
 	public RatingInfo getOne(@PathVariable Long id) {
 		return ratingInfoRepo.findOne(id);
 
 	}
 
+	//save a instance of ratinginfo to the repo
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public RatingInfo create(@RequestBody RatingInfo info, Authentication auth) {

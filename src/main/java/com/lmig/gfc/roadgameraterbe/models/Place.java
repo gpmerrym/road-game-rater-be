@@ -37,6 +37,7 @@ public class Place {
 
 	private double totalRates;
 	
+	//@OneToMany(mappedBy = "places")
 	@ManyToMany
 	@JsonIgnore
 	private List<User> user;

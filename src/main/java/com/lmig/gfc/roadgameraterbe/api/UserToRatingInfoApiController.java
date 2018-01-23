@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.lmig.gfc.roadgameraterbe.models.Place;
+import com.lmig.gfc.roadgameraterbe.models.PlaceView;
 import com.lmig.gfc.roadgameraterbe.models.RatingInfo;
 import com.lmig.gfc.roadgameraterbe.models.RatingInfoView;
 import com.lmig.gfc.roadgameraterbe.models.User;
@@ -21,11 +24,14 @@ import com.lmig.gfc.roadgameraterbe.repositories.UserRepository;
 public class UserToRatingInfoApiController {
 
 	private RatingInfoRepository ratingInfoRepo;
+	private UserRepository userRepo;
+	private PlaceRepository placeRepo;
 
 	public UserToRatingInfoApiController(RatingInfoRepository ratingInfoRepo, UserRepository userRepo,
 			PlaceRepository placeRepo) {
 		this.ratingInfoRepo = ratingInfoRepo;
-
+		this.userRepo = userRepo;
+		this.placeRepo = placeRepo;
 	}
 
 	@GetMapping("")
@@ -40,4 +46,23 @@ public class UserToRatingInfoApiController {
 
 	}
 
+	
+	@GetMapping("everything")
+	public User getOne(Authentication auth) {
+		Long userId = (((User) auth.getPrincipal()).getId());
+		User user = userRepo.findById(userId);
+				
+		
+		List<RatingInfo> ratings = ratingInfoRepo.findByUserId(userId);
+		ArrayList<RatingInfoView> ratingViews = new ArrayList<RatingInfoView>();
+		for (RatingInfo rates : ratings) {
+			ratingViews.add(new RatingInfoView(rates));
+		}
+		//return ratingViews;
+		
+		return user;
+
+	}
 }
+
+

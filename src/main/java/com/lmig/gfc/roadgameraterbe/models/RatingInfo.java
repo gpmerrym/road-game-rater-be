@@ -44,11 +44,6 @@ public class RatingInfo {
 	@Column
 	private String itemImageUrl;
 	
-//	@Column
-//	private Place location;
-	
-	
-
 	public RatingInfo(int rating, Boolean isClean, Boolean isHandicap, Boolean isFamily, String comments) {
 		super();
 

@@ -4,16 +4,17 @@ public class RatingInfoView {
 
 	private RatingInfo ratingInfo;
 
-	
+	//private PlaceView placeView;
 
 	public RatingInfoView(RatingInfo ratingInfo) {
 		this.ratingInfo = ratingInfo;
+		//this.placeView = placeView;
 		// TODO Auto-generated constructor stub
 	}
 
-	public RatingInfo getRatinginfo() {
-		return ratingInfo;
-	}
+//	public RatingInfo getRatinginfo() {
+//		return ratingInfo;
+//	}
 
 	public Long getId() {
 		return ratingInfo.getId();
@@ -41,6 +42,8 @@ public class RatingInfoView {
 
 	public Place getPlace() {
 		return ratingInfo.getPlace();
+		
+		
 	}
 
 	public String getItemImageUrl() {
@@ -50,5 +53,11 @@ public class RatingInfoView {
 	public User getUser() {
 		return ratingInfo.getUser();
 	}
+	
+//	public Long getUser() {
+//		return ratingInfo.getUser().getId();
+//	}
+	
+	
 
 }

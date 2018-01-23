@@ -26,14 +26,18 @@ public class UserApiController {
 		this.encoder = encoder;
 	}
 
+	//Get the user currently logged in. (name, address, and etc)
 	@GetMapping("")
 	public User getUser(Authentication auth) {
-		User user = (User) auth.getPrincipal();
-		String username = user.getUsername();
+		if (auth != null) {
+			User user = (User) auth.getPrincipal();
+			String username = user.getUsername();
+			return userRepository.findByUsername(username);
+		}
+		return null;
 
-		return userRepository.findByUsername(username);
 	}
-
+	//update the users info if needed
 	@PutMapping("")
 	public User updateUser(Authentication auth, @RequestBody User user) {
 
@@ -42,7 +46,8 @@ public class UserApiController {
 
 		return userRepository.save(user);
 	}
-
+	
+	//Create a new user. Post record in DB. Encrypt new password.
 	@PostMapping("create")
 	public User createUser(@RequestBody User user) {
 		String password = user.getPassword();

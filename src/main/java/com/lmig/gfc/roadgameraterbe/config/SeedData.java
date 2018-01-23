@@ -2,6 +2,9 @@ package com.lmig.gfc.roadgameraterbe.config;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -195,7 +198,36 @@ public class SeedData {
 		rating38.setUser(user2);
 		rating39.setUser(user);
 		rating40.setUser(user2);
-
+		
+		
+		
+		List<User> users = new ArrayList<User>();
+		users.add(user);
+		users.add(user2);
+		
+		location1.setUser(users);
+		location2.setUser(users);
+		location3.setUser(users);
+		location4.setUser(users);
+		location5.setUser(users);
+		location6.setUser(users);
+		location7.setUser(users);
+		location8.setUser(users);
+		location9.setUser(users);
+		location10.setUser(users);
+		location11.setUser(users);
+		location12.setUser(users);
+		location13.setUser(users);
+		location14.setUser(users);
+		location15.setUser(users);
+		location16.setUser(users);
+		location17.setUser(users);
+		location18.setUser(users);
+		location19.setUser(users);
+		location20.setUser(users);
+		
+		
+		
 		placeRepo.save(location1);
 		placeRepo.save(location2);
 		placeRepo.save(location3);
@@ -257,6 +289,10 @@ public class SeedData {
 		ratingInfoRepo.save(rating38);
 		ratingInfoRepo.save(rating39);
 		ratingInfoRepo.save(rating40);
+		
+		
+		
+		
 
 		
 	}

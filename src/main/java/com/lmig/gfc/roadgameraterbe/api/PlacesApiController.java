@@ -28,24 +28,25 @@ public class PlacesApiController {
 	public PlacesApiController(PlaceRepository placeRepo) {
 		this.placeRepo = placeRepo;
 	}
-
+	//get all the places in the places repository
 	@GetMapping("")
 	public List<Place> getAll() {
 		return placeRepo.findAll();
 	}
-
+	//get one place by google id
 	@GetMapping("/googleId/{googleId}")
 	public Place getOne(@PathVariable String googleId) {
 		return placeRepo.findByGoogleId(googleId);
 		
 	}
-	
+	//get one place by place id
 	@GetMapping("{id}")
 	public Place getOne(@PathVariable Long id) {
 		return placeRepo.findOne(id);
 
 	}
 
+	//post place to the place repo (database)
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Place create(@RequestBody Place place) {
@@ -58,13 +59,14 @@ public class PlacesApiController {
 		return identifiedPlace;
 
 	}
-
+	//update the contents of a place
 	@PutMapping("{id}")
 	public Place update(@RequestBody Place place, @PathVariable Long id) {
 		place.setId(id);
 		return placeRepo.save(place);
 	}
 
+	//delete a place based on place id
 	@DeleteMapping("{id}")
 	public Place delete(@PathVariable Long id) {
 		Place place = placeRepo.findOne(id);
