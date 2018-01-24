@@ -41,11 +41,8 @@ public class SessionApiController {
 			return ((User) auth.getPrincipal()).getId();
 		}
 		return null;
-		
-		}
-		
-	
-	
+
+	}
 
 	// logs in a user
 	@PutMapping("/mine")

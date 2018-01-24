@@ -46,23 +46,19 @@ public class UserToRatingInfoApiController {
 
 	}
 
-	
 	@GetMapping("everything")
 	public User getOne(Authentication auth) {
 		Long userId = (((User) auth.getPrincipal()).getId());
 		User user = userRepo.findById(userId);
-				
-		
+
 		List<RatingInfo> ratings = ratingInfoRepo.findByUserId(userId);
 		ArrayList<RatingInfoView> ratingViews = new ArrayList<RatingInfoView>();
 		for (RatingInfo rates : ratings) {
 			ratingViews.add(new RatingInfoView(rates));
 		}
-		//return ratingViews;
-		
+		// return ratingViews;
+
 		return user;
 
 	}
 }
-
-

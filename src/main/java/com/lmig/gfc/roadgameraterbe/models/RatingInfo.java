@@ -38,13 +38,13 @@ public class RatingInfo {
 	@Column
 	private Boolean isFamily;
 
-	@Column(length = 500)
+	@Column(length = 5000)
 	private String comments;
 	
 	@Column
 	private String itemImageUrl;
 	
-	public RatingInfo(int rating, Boolean isClean, Boolean isHandicap, Boolean isFamily, String comments) {
+	public RatingInfo(int rating, Boolean isClean, Boolean isHandicap, Boolean isFamily, String comments, String itemImageUrl) {
 		super();
 
 		this.rating = rating;
@@ -52,6 +52,7 @@ public class RatingInfo {
 		this.isHandicap = isHandicap;
 		this.isFamily = isFamily;
 		this.comments = comments;
+		this.itemImageUrl = itemImageUrl;
 	}
 
 	public RatingInfo() {
